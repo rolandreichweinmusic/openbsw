@@ -27,7 +27,9 @@ add_executable(
     src/systems/SysAdminSystem.cpp
     src/systems/SafetySystem.cpp
     ${app.referenceAppExtraSources}
-    src/main.cpp)
+    src/main.cpp
+    $<TARGET_OBJECTS:pico-sdk>
+)
 
 set_target_properties(app.referenceApp PROPERTIES SUFFIX ".elf")
 
@@ -58,6 +60,7 @@ target_link_libraries(
             main
             stdioConsoleInput
             osFreeRtos
+	    ${APPLICATION_LINK_ADD}
             asyncFreeRtosImpl
             util
             udsConfigurationImpl

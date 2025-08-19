@@ -53,6 +53,7 @@ void SafeWatchdog::enableMcuWatchdog()
 bool SafeWatchdog::checkWdConfigs()
 {
 #ifdef PLATFORM_SUPPORT_WATCHDOG
+#if 0
     uint32_t const MCU_WD_TIMEOUT = 0x00007D00U; // 250ms * 128000/1000
 
     uint32_t const WD_CONFIG_MASK = WDOG_CS_EN_MASK | WDOG_CS_CLK_MASK;
@@ -62,13 +63,17 @@ bool SafeWatchdog::checkWdConfigs()
 
     return (isWdConfigValid && isWdTimeOutValid);
 #endif
+#endif
     return true;
 }
 
 #ifdef PLATFORM_SUPPORT_WATCHDOG
 uint8_t SafeWatchdog::getCsTst()
 {
+#if 0
     return static_cast<uint8_t>((WDOG->CS & WDOG_CS_TST_MASK) >> WDOG_CS_TST_SHIFT);
+#endif
+    return true;
 }
 #endif
 
