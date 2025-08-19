@@ -51,6 +51,7 @@ We recommend to read their licenses, as their terms may differ from the terms de
 | NXP S32K148 Headers       | 1.1a     | BSD-3     | ``platforms/s32k1xx/bsp/bspMcu/include/3rdparty/nxp/*.h``            |
 | ST STM32F4 Device Headers | 2.6.11   | Apache v2 | ``platforms/stm32/bsp/bspMcu/include/3rdparty/st/LICENSE``           |
 | ST STM32G4 Device Headers | 1.2.6    | Apache v2 | ``platforms/stm32/bsp/bspMcu/include/3rdparty/st/LICENSE``           |
+| Pi Pico SDK               | 2.2      | BSD-3     | ``platforms/rp2040/3rdparty/pico-sdk``                               |
 | CodeCoverage              | 877bab9d | BSD-3     | ``cmake/modules/CodeCoverage.cmake``                                 |
 
 ## MISRA

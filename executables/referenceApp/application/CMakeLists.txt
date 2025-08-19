@@ -9,6 +9,10 @@ add_executable(
     src/systems/SafetySystem.cpp
     src/main.cpp)
 
+if (BUILD_TARGET_PLATFORM STREQUAL "PIPICO")
+    target_sources(app.referenceApp PRIVATE $<TARGET_OBJECTS:pico-sdk>)
+endif ()
+
 if (PLATFORM_SUPPORT_TRANSPORT)
     target_sources(app.referenceApp PRIVATE src/systems/TransportSystem.cpp)
     if (PLATFORM_SUPPORT_UDS)
@@ -101,6 +105,7 @@ target_link_libraries(
             main
             stdioConsoleInput
             osRtos
+            ${APPLICATION_LINK_ADD}
             asyncRtosImpl
             util
             time

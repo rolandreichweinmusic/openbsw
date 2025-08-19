@@ -1,0 +1,8 @@
+add_subdirectory(bspConfiguration)
+add_subdirectory(ethConfiguration)
+add_subdirectory(freeRtosCoreConfiguration)
+add_subdirectory(safety)
+add_subdirectory(main)
+
+add_library(freeRtosPort ALIAS freeRtosRP2040Port)
+add_library(freeRtosPortImpl ALIAS freeRtosRP2040)
