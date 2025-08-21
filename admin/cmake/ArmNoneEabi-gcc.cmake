@@ -5,7 +5,7 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -funsigned-bitfields")
 set(CMAKE_CXX_FLAGS
     "${CMAKE_CXX_FLAGS} -funsigned-bitfields -femit-class-debug-always")
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} \
---specs=nano.specs -specs=nosys.specs")
+-specs=nosys.specs")
 
 set(CMAKE_C_COMPILER arm-none-eabi-gcc)
 set(CMAKE_CXX_COMPILER arm-none-eabi-g++)
