@@ -17,8 +17,8 @@ public:
     void cyclic();
 
 private:
-    uint16_t _counter;
-    uint8_t const WATCHDOG_CYCLIC_COUNTER = 8;
+    uint32_t _counter;
+    uint32_t const WATCHDOG_CYCLIC_COUNTER = 8;
 };
 
 } // namespace safety
