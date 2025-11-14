@@ -410,6 +410,20 @@ Reset_Handler:
     bgt    .LC1
 .LC0:
 
+    ldr    r1, =__DATA_ROM_RX
+    ldr    r2, =__LAUNCH_FROM_RAM_START
+    ldr    r3, =__LAUNCH_FROM_RAM_END
+
+    subs    r3, r2
+    ble     .L2C0
+
+.L2C1:
+    subs    r3, 4
+    ldr    r0, [r1,r3]
+    str    r0, [r2,r3]
+    bgt    .L2C1
+.L2C0:
+
 /*     This part of work usually is done in C library startup code. Otherwise,
  *     define this macro to enable it in this startup.
  *
