@@ -102,6 +102,19 @@
     #define portYIELD_FROM_ISR( x )                     portEND_SWITCHING_ISR( x )
 /*-----------------------------------------------------------*/
 
+/* Exception handlers */
+/* The pico-sdk crt0 vector table refers to the scheduler exceptions as
+ * isr_svcall / isr_pendsv / isr_systick (it only provides weak defaults for
+ * them). Rename the FreeRTOS handlers accordingly so they override those weak
+ * symbols at link time, exactly like the RP2040 port does. Without this the
+ * scheduler exceptions end up in the SDK's default handler and no context
+ * switch ever happens. */
+    #define vPortSVCHandler        isr_svcall
+    #define xPortPendSVHandler     isr_pendsv
+    #define xPortSysTickHandler    isr_systick
+
+/*-----------------------------------------------------------*/
+
 /* Critical section management. */
     extern void vPortEnterCritical( void );
     extern void vPortExitCritical( void );

@@ -105,3 +105,11 @@ SysTick_Handler:
     BL      _tx_timer_interrupt
     POP     {r0, lr}
     BX      LR
+
+@
+@    /* The pico-sdk crt0 owns the vector table and refers to the scheduler
+@       exceptions as isr_svcall / isr_pendsv / isr_systick, for which it only
+@       provides weak defaults. Alias them onto the ThreadX handlers so they
+@       override those weak symbols at link time. Without this the SVC, PendSV
+@       and SysTick exceptions are dispatched to the SDK default handler and no
+@       context switch or tick ever reaches ThreadX.  */

@@ -43,6 +43,19 @@ set(CMAKE_EXE_LINKER_FLAGS
 
 set(APPLICATION_LINK_ADD "boot_stage2_library")
 
+# The pico-sdk crt0 owns the vector table and names the scheduler exceptions
+# isr_pendsv / isr_systick, for which it only provides weak defaults. ThreadX
+# names its handlers differently, so alias them here. Otherwise PendSV and
+# SysTick are dispatched to the SDK default handler and the scheduler never
+# runs. SVC is not aliased: the Cortex-M33 port runs in single mode and
+# therefore defines no SVC_Handler. The FreeRTOS port does the equivalent
+# renaming in its portmacro.h.
+if (BUILD_TARGET_RTOS STREQUAL "THREADX")
+    string(APPEND CMAKE_EXE_LINKER_FLAGS
+           " -Wl,--defsym=isr_pendsv=PendSV_Handler"
+           " -Wl,--defsym=isr_systick=SysTick_Handler")
+endif ()
+
 set(PLATFORM_SUPPORT_IO
     OFF
     CACHE BOOL "Turn IO support on or off" FORCE)
