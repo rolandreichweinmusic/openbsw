@@ -56,9 +56,15 @@
 #define configIDLE_SHOULD_YIELD 1
 
 /* The RP2350 reference configuration runs the system clock at 150 MHz, and the
- * Cortex-M33 SysTick is clocked from it. */
-#define configCPU_CLOCK_HZ     (150000000UL)
-#define configSYSTICK_CLOCK_HZ configCPU_CLOCK_HZ
+ * Cortex-M33 SysTick is clocked from it.
+ *
+ * configSYSTICK_CLOCK_HZ is deliberately NOT defined here. The port only
+ * defines it itself (as configCPU_CLOCK_HZ) when it is absent, and in that case
+ * also sets SysTick's CLKSOURCE bit so the counter runs off the core clock.
+ * Defining it, even to the very same value, selects the opposite: SysTick then
+ * counts the external reference clock instead, which makes the tick far too
+ * slow, so the watchdog is no longer serviced in time and the board resets. */
+#define configCPU_CLOCK_HZ (150000000UL)
 
 /* Synchronization Related */
 #define configUSE_MUTEXES                       1
