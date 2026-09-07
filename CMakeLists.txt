@@ -221,16 +221,16 @@ if (BUILD_EXECUTABLE STREQUAL "unitTest")
         add_subdirectory(platforms/s32k1xx/bsp/canflex2Transceiver/test)
         add_subdirectory(platforms/s32k1xx/bsp/bspUart/test)
 
-    elseif (OPENBSW_PLATFORM STREQUAL "rp2040")
+    elseif (OPENBSW_PLATFORM STREQUAL "rp2xxx")
 
-        add_subdirectory(platforms/rp2040/unitTest EXCLUDE_FROM_ALL)
+        add_subdirectory(platforms/rp2xxx/unitTest EXCLUDE_FROM_ALL)
 
-        add_subdirectory(platforms/rp2040/bsp/bspCore/test)
-        add_subdirectory(platforms/rp2040/bsp/bspEepromDriver/test)
-        add_subdirectory(platforms/rp2040/bsp/bspIo/test)
-        add_subdirectory(platforms/rp2040/bsp/bspSci/test)
+        add_subdirectory(platforms/rp2xxx/bsp/bspCore/test)
+        add_subdirectory(platforms/rp2xxx/bsp/bspEepromDriver/test)
+        add_subdirectory(platforms/rp2xxx/bsp/bspIo/test)
+        add_subdirectory(platforms/rp2xxx/bsp/bspSci/test)
 
-        # platforms/rp2040/bsp/canTransceiver/test: TODO
+        # platforms/rp2xxx/bsp/canTransceiver/test: TODO
 
     else ()
         message(

@@ -1,5 +1,0 @@
-add_library(bspInterruptsImpl INTERFACE)
-
-target_include_directories(bspInterruptsImpl INTERFACE include)
-
-target_link_libraries(bspInterruptsImpl INTERFACE platform)

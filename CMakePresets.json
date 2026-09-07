@@ -62,29 +62,29 @@
             }
         },
         {
-            "name": "tests-rp2040-debug",
-            "displayName": "Configure for testing RP2040 modules (debug)",
-            "description": "Configure for testing RP2040 modules (debug)",
+            "name": "tests-rp2xxx-debug",
+            "displayName": "Configure for testing RP2xxx modules (debug)",
+            "description": "Configure for testing RP2xxx modules (debug)",
             "inherits": "_config-base",
-            "binaryDir": "${sourceDir}/build/tests/rp2040/Debug",
+            "binaryDir": "${sourceDir}/build/tests/rp2xxx/Debug",
             "cacheVariables": {
                 "CMAKE_DEFAULT_BUILD_TYPE": "Debug",
                 "CMAKE_CONFIGURATION_TYPES": "Debug",
                 "BUILD_EXECUTABLE": "unitTest",
-                "OPENBSW_PLATFORM": "rp2040"
+                "OPENBSW_PLATFORM": "rp2xxx"
             }
         },
         {
-            "name": "tests-rp2040-release",
-            "displayName": "Configure for testing RP2040 modules (release)",
-            "description": "Configure for testing RP2040 modules (release)",
+            "name": "tests-rp2xxx-release",
+            "displayName": "Configure for testing RP2xxx modules (release)",
+            "description": "Configure for testing RP2xxx modules (release)",
             "inherits": "_config-base",
-            "binaryDir": "${sourceDir}/build/tests/rp2040/Release",
+            "binaryDir": "${sourceDir}/build/tests/rp2xxx/Release",
             "cacheVariables": {
                 "CMAKE_DEFAULT_BUILD_TYPE": "Release",
                 "CMAKE_CONFIGURATION_TYPES": "Release",
                 "BUILD_EXECUTABLE": "unitTest",
-                "OPENBSW_PLATFORM": "rp2040"
+                "OPENBSW_PLATFORM": "rp2xxx"
             }
         },
         {
@@ -267,6 +267,54 @@
             }
         },
         {
+            "name": "pipico-threadx-gcc",
+            "generator": "Ninja Multi-Config",
+            "displayName": "Pi Pico (RP2040) ThreadX configuration (GCC)",
+            "description": "Configure for Pi Pico / RP2040 platform using ARM GCC toolchain",
+            "inherits": "_config-base",
+            "toolchainFile": "${sourceDir}/cmake/toolchains/ArmNoneEabi-gcc.cmake",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "BUILD_EXECUTABLE": "referenceApp",
+                "BUILD_TARGET_PLATFORM": "PIPICO",
+                "BUILD_TARGET_RTOS": "THREADX",
+                "CMAKE_CONFIGURATION_TYPES": "RelWithDebInfo;Debug;Release",
+                "CMAKE_DEFAULT_BUILD_TYPE": "RelWithDebInfo"
+            }
+        },
+        {
+            "name": "pico2-freertos-gcc",
+            "generator": "Ninja Multi-Config",
+            "displayName": "Pi Pico 2 (RP2350) FreeRTOS configuration (GCC)",
+            "description": "Configure for Pi Pico 2 / RP2350 platform using ARM GCC toolchain",
+            "inherits": "_config-base",
+            "toolchainFile": "${sourceDir}/cmake/toolchains/ArmNoneEabi-gcc.cmake",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "BUILD_EXECUTABLE": "referenceApp",
+                "BUILD_TARGET_PLATFORM": "PICO2",
+                "BUILD_TARGET_RTOS": "FREERTOS",
+                "CMAKE_CONFIGURATION_TYPES": "RelWithDebInfo;Debug;Release",
+                "CMAKE_DEFAULT_BUILD_TYPE": "RelWithDebInfo"
+            }
+        },
+        {
+            "name": "pico2-threadx-gcc",
+            "generator": "Ninja Multi-Config",
+            "displayName": "Pi Pico 2 (RP2350) ThreadX configuration (GCC)",
+            "description": "Configure for Pi Pico 2 / RP2350 platform using ARM GCC toolchain",
+            "inherits": "_config-base",
+            "toolchainFile": "${sourceDir}/cmake/toolchains/ArmNoneEabi-gcc.cmake",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "BUILD_EXECUTABLE": "referenceApp",
+                "BUILD_TARGET_PLATFORM": "PICO2",
+                "BUILD_TARGET_RTOS": "THREADX",
+                "CMAKE_CONFIGURATION_TYPES": "RelWithDebInfo;Debug;Release",
+                "CMAKE_DEFAULT_BUILD_TYPE": "RelWithDebInfo"
+            }
+        },
+        {
             "name": "s32k148-freertos-gcc",
             "generator": "Ninja Multi-Config",
             "displayName": "S32K148 FreeRTOS configuration (GCC)",
@@ -377,17 +425,17 @@
             "configuration": "Release"
         },
         {
-            "name": "tests-rp2040-debug",
-            "displayName": "Build tests of RP2040 modules (debug)",
-            "description": "Build tests of RP2040 modules (debug)",
-            "configurePreset": "tests-rp2040-debug",
+            "name": "tests-rp2xxx-debug",
+            "displayName": "Build tests of RP2xxx modules (debug)",
+            "description": "Build tests of RP2xxx modules (debug)",
+            "configurePreset": "tests-rp2xxx-debug",
             "configuration": "Debug"
         },
         {
-            "name": "tests-rp2040-release",
-            "displayName": "Build tests of RP2040 modules (release)",
-            "description": "Build tests of RP2040 modules (release)",
-            "configurePreset": "tests-rp2040-release",
+            "name": "tests-rp2xxx-release",
+            "displayName": "Build tests of RP2xxx modules (release)",
+            "description": "Build tests of RP2xxx modules (release)",
+            "configurePreset": "tests-rp2xxx-release",
             "configuration": "Release"
         },
         {
@@ -459,6 +507,24 @@
             "configurePreset": "pipico-freertos-gcc"
         },
         {
+            "name": "pipico-threadx-gcc",
+            "displayName": "Pi Pico (RP2040) ThreadX build (GCC)",
+            "description": "Build reference application for the Pi Pico / RP2040 platform with GCC",
+            "configurePreset": "pipico-threadx-gcc"
+        },
+        {
+            "name": "pico2-freertos-gcc",
+            "displayName": "Pi Pico 2 (RP2350) FreeRTOS build (GCC)",
+            "description": "Build reference application for the Pi Pico 2 / RP2350 platform with GCC",
+            "configurePreset": "pico2-freertos-gcc"
+        },
+        {
+            "name": "pico2-threadx-gcc",
+            "displayName": "Pi Pico 2 (RP2350) ThreadX build (GCC)",
+            "description": "Build reference application for the Pi Pico 2 / RP2350 platform with GCC",
+            "configurePreset": "pico2-threadx-gcc"
+        },
+        {
             "name": "s32k148-freertos-gcc",
             "displayName": "S32K148 FreeRTOS build (GCC)",
             "description": "Build reference application for S32K148 platform with Clang (Release by default; for Debug use --config Debug)",
@@ -513,18 +579,18 @@
             "configurePreset": "tests-s32k1xx-release"
         },
         {
-            "name": "tests-rp2040-debug",
-            "displayName": "Run tests of RP2040 modules (debug)",
-            "description": "Run tests of RP2040 modules (debug)",
+            "name": "tests-rp2xxx-debug",
+            "displayName": "Run tests of RP2xxx modules (debug)",
+            "description": "Run tests of RP2xxx modules (debug)",
             "configuration": "Debug",
-            "configurePreset": "tests-rp2040-debug"
+            "configurePreset": "tests-rp2xxx-debug"
         },
         {
-            "name": "tests-rp2040-release",
-            "displayName": "Run tests of RP2040 modules (release)",
-            "description": "Run tests of RP2040 modules (release)",
+            "name": "tests-rp2xxx-release",
+            "displayName": "Run tests of RP2xxx modules (release)",
+            "description": "Run tests of RP2xxx modules (release)",
             "configuration": "Release",
-            "configurePreset": "tests-rp2040-release"
+            "configurePreset": "tests-rp2xxx-release"
         },
         {
             "name": "tests-stm32-debug",

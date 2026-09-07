@@ -8,7 +8,8 @@
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
 
-set(OPENBSW_PLATFORM rp2040)
+set(OPENBSW_PLATFORM rp2xxx)
+set(RP2XXX_CHIP RP2040)
 
 # The vendored pico-sdk C headers use static_assert, which needs C11.
 set(CMAKE_C_STANDARD 11)

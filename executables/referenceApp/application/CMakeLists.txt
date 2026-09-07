@@ -9,7 +9,7 @@ add_executable(
     src/systems/SafetySystem.cpp
     src/main.cpp)
 
-if (BUILD_TARGET_PLATFORM STREQUAL "PIPICO")
+if (OPENBSW_PLATFORM STREQUAL "rp2xxx")
     target_sources(app.referenceApp PRIVATE $<TARGET_OBJECTS:pico-sdk>)
 endif ()
 
